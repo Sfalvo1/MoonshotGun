@@ -6,7 +6,9 @@ public class LaserProjectile : MonoBehaviour
 {
     [Tooltip("Higher number, slower projectile")] [SerializeField] int projectileSpeed = 20;
 
-    float moveSpeed = 20f;
+    public float moveSpeed = 20f;
+    public float lifeTime = 3f;
+    private float lifeTimeTimer = 0;
 
     Vector2 spawnPosition;
     Vector2 targetPosition;
@@ -50,8 +52,9 @@ public class LaserProjectile : MonoBehaviour
     void Update()
     {
         transform.Translate(moveDir);
+        lifeTimeTimer += Time.deltaTime;
 
-        if (Vector2.Distance(spawnPosition, transform.position) > 30f)
+        if (lifeTimeTimer >= lifeTime)
         {
             Destroy(gameObject);
         }
@@ -61,7 +64,14 @@ public class LaserProjectile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            Scoreboard.Instance.AddScore(collision.GetComponent<ScoreAmount>().scoreAmount);
             Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
+        if(collision.tag == "Moon")
+        {
+            collision.GetComponent<Moon>().SpawnMoonChip((Vector2)transform.position);
             Destroy(gameObject);
         }
     }

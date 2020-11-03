@@ -7,6 +7,8 @@ public class Scroll : MonoBehaviour
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
 
+    public float scrollSpeed = 100f;
+
     private Vector2 moveDir;
 
     private float textureUnitSizeY;
@@ -20,7 +22,7 @@ public class Scroll : MonoBehaviour
         Texture2D texture = sprite.texture;
         textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
 
-        moveDir = ((((Vector2)transform.position - new Vector2(0, -50f).normalized * -1) / 200f));
+        moveDir = ((((Vector2)transform.position - new Vector2(0, -50f).normalized * -1) / scrollSpeed));
     }
 
     void LateUpdate()

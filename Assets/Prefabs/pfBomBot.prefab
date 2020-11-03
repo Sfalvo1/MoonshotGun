@@ -93,11 +93,11 @@ GameObject:
   - component: {fileID: 5753172757057693019}
   - component: {fileID: 8067991800828766547}
   - component: {fileID: 4151697149396734103}
-  - component: {fileID: 7247129233595590306}
-  - component: {fileID: 892033721646645899}
+  - component: {fileID: 5727128621263872579}
+  - component: {fileID: -2140243950793145703}
   m_Layer: 0
   m_Name: pfBomBot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7247129233595590306
+--- !u!114 &5727128621263872579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,11 +163,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6554535225187539122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77911cddb70f3e344b8aa2f7bc1c0a9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0da8fbfe8c50f6e43ad7b5ebd8673d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
---- !u!114 &892033721646645899
+  clusterParent: {fileID: 0}
+  scoreAmount: 5
+--- !u!114 &-2140243950793145703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,8 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6554535225187539122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f188a08b6368c2478fff1335309d6f7, type: 3}
+  m_Script: {fileID: 11500000, guid: deffba6c34a1527428ee9da931de1d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
-  spriteRenderer: {fileID: 732005823079159511}
+  scoreAmount: 5

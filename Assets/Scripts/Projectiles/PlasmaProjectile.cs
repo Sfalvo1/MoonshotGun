@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoonProjectile : MonoBehaviour
+public class PlasmaProjectile : MonoBehaviour
 {
     [Tooltip("Higher number, slower projectile")] [SerializeField] int projectileSpeed = 20;
 
-    float moveSpeed = 20f;
+    public float moveSpeed = 20f;
+    public float lifeTime = 3f;
+    private float lifeTimeTimer;
+
 
     Vector2 spawnPosition;
     Vector2 targetPosition;
     Vector2 moveDir;
 
-    public static MoonProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
+    public static PlasmaProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
     {
-        Transform pfProjectile = Resources.Load<Transform>("pfMoonProjectile");
+        Transform pfProjectile = Resources.Load<Transform>("pfPlasmaProjectile");
         Transform projectileTransform = Instantiate(pfProjectile, spawnPosition, Quaternion.identity);
 
-        MoonProjectile projectile = projectileTransform.GetComponent<MoonProjectile>();
+        PlasmaProjectile projectile = projectileTransform.GetComponent<PlasmaProjectile>();
         projectile.SetTargetPosition(targetPosition);
 
         return projectile;
@@ -32,14 +35,14 @@ public class MoonProjectile : MonoBehaviour
     void Start()
     {
         moveDir = ((((Vector2)transform.position - targetPosition).normalized * -1) / projectileSpeed);
-
     }
 
     void Update()
     {
         transform.Translate(moveDir);
 
-        if (Vector2.Distance(spawnPosition, transform.position) > 30f)
+        lifeTimeTimer += Time.deltaTime;
+        if (lifeTimeTimer >= lifeTime)
         {
             Destroy(gameObject);
         }
@@ -47,9 +50,12 @@ public class MoonProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if(collision.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            if (!collision.GetComponent<PlayerController>().godMode)
+            {
+                Destroy(collision.gameObject);
+            }
             Destroy(gameObject);
         }
     }

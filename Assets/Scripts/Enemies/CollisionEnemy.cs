@@ -35,9 +35,4 @@ public class CollisionEnemy : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, movementSpeed * Time.deltaTime);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(gameObject);
-    }
 }

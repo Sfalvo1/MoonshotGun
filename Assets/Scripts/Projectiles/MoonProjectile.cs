@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlasmaProjectile : MonoBehaviour
+public class MoonProjectile : MonoBehaviour
 {
     [Tooltip("Higher number, slower projectile")] [SerializeField] int projectileSpeed = 20;
 
-    float moveSpeed = 20f;
+    public float moveSpeed = 20f;
+    public float lifeTime = 3f;
+    private float lifeTimeTimer;
 
     Vector2 spawnPosition;
     Vector2 targetPosition;
     Vector2 moveDir;
 
-    public static PlasmaProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
+    public static MoonProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
     {
-        Transform pfProjectile = Resources.Load<Transform>("pfPlasmaProjectile");
+        Transform pfProjectile = Resources.Load<Transform>("pfMoonProjectile");
         Transform projectileTransform = Instantiate(pfProjectile, spawnPosition, Quaternion.identity);
 
-        PlasmaProjectile projectile = projectileTransform.GetComponent<PlasmaProjectile>();
+        MoonProjectile projectile = projectileTransform.GetComponent<MoonProjectile>();
         projectile.SetTargetPosition(targetPosition);
 
         return projectile;
@@ -32,13 +34,16 @@ public class PlasmaProjectile : MonoBehaviour
     void Start()
     {
         moveDir = ((((Vector2)transform.position - targetPosition).normalized * -1) / projectileSpeed);
+
     }
 
     void Update()
     {
         transform.Translate(moveDir);
 
-        if (Vector2.Distance(spawnPosition, transform.position) > 30f)
+        lifeTimeTimer += Time.deltaTime;
+
+        if (lifeTimeTimer >= lifeTime)
         {
             Destroy(gameObject);
         }
@@ -46,12 +51,10 @@ public class PlasmaProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Enemy")
         {
-            if (!collision.GetComponent<PlayerController>().godMode)
-            {
-                Destroy(collision.gameObject);
-            }
+            Scoreboard.Instance.AddScore(collision.GetComponent<ScoreAmount>().scoreAmount);
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

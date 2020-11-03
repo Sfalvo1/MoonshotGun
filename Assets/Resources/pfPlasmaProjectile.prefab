@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2760991197379648208}
   m_Layer: 0
   m_Name: pfPlasmaProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b91a7cea374754d8c1ec9baa7b1fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileSpeed: 40
 --- !u!1 &3914757371241648680
 GameObject:
   m_ObjectHideFlags: 0

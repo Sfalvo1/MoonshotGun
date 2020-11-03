@@ -8,6 +8,8 @@ public class ShootingEnemy : MonoBehaviour
     [SerializeField] float movementSpeed = 1f;
     [SerializeField] SpriteRenderer spriteRenderer;
 
+    public int scoreAmount;
+
     Vector2 startPosition;
     Vector2 endPoint;
 
@@ -27,8 +29,11 @@ public class ShootingEnemy : MonoBehaviour
 
     void Update()
     {
-        HandleShooting();
-        HandleRotation();
+        if (player != null)
+        {
+            HandleShooting();
+            HandleRotation();
+        }
 
         transform.position += -transform.up * movementSpeed * Time.deltaTime;
 

@@ -37,7 +37,10 @@ public class EnemyDirector : MonoBehaviour
     {
         int enemyNumber = UnityEngine.Random.Range(0, 3);
         Enemy spawnedEnemy = Instantiate(enemies[enemyNumber], spawnPosition, Quaternion.identity);
-        spawnedEnemy.player = player;
+        if (player != null)
+        {
+            spawnedEnemy.player = player;
+        }
     }
 
     private void GenerateSpawnPosition()
