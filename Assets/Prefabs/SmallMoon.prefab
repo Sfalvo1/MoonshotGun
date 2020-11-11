@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6942299680620357160}
   - component: {fileID: 5800012363230409080}
   m_Layer: 0
-  m_Name: Moon
+  m_Name: SmallMoon
   m_TagString: Moon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

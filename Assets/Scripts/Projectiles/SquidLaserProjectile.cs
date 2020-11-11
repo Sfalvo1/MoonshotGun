@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserProjectile : MonoBehaviour
+public class SquidLaserProjectile : MonoBehaviour
 {
     [Tooltip("Higher number, slower projectile")] [SerializeField] int projectileSpeed = 20;
 
-    public float moveSpeed = 20f;
     public float lifeTime = 3f;
     private float lifeTimeTimer = 0;
     private int laserLife = 2;
@@ -20,12 +19,12 @@ public class LaserProjectile : MonoBehaviour
 
     [SerializeField] SpriteRenderer laserSprite;
 
-    public static LaserProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
+    public static SquidLaserProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
     {
-        Transform pfProjectile = Resources.Load<Transform>("pfLaserProjectile");
+        Transform pfProjectile = Resources.Load<Transform>("pfSquidLaserProjectile");
         Transform projectileTransform = Instantiate(pfProjectile, spawnPosition, Quaternion.identity);
 
-        LaserProjectile projectile = projectileTransform.GetComponent<LaserProjectile>();
+        SquidLaserProjectile projectile = projectileTransform.GetComponent<SquidLaserProjectile>();
         projectile.SetTargetPosition(targetPosition);
         projectile.SetDirection(spawnPosition, targetPosition);
 
@@ -63,33 +62,24 @@ public class LaserProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        print("hitting something");
+        if (collision.tag == "Shield" && collision.GetComponent<Shield>().GetShieldAmount() > 0)
         {
-            Scoreboard.Instance.AddScore(collision.GetComponent<ScoreAmount>().scoreAmount);
-            Destroy(collision.gameObject);
+            collision.GetComponent<Shield>().ShieldHit();
             Destroy(gameObject);
         }
-
-        if(collision.tag == "MoonPiece")
+        if (collision.tag == "Player")
         {
-            MoonPiece moonPiece = collision.GetComponent<MoonPiece>();
-            
-            if (moonPiece.moonChipAmount > 0)
-            {
-                moonPiece.SpawnMoonChip((Vector2)transform.position);
-                moonPiece.moonChipAmount--;
-                Destroy(gameObject);
-            }
-            else
+            if (!collision.GetComponent<PlayerController>().godMode)
             {
                 Destroy(collision.gameObject);
-                Destroy(gameObject);
             }
+            Destroy(gameObject);
         }
-        if(collision.tag == "MoonChip")
+        if (collision.tag == "MoonChip")
         {
             laserLife--;
-            if(laserLife <= 0)
+            if (laserLife <= 0)
             {
                 Destroy(gameObject);
             }

@@ -8,6 +8,9 @@ TagManager:
   - Projectile
   - PlayerProjectile
   - Moon
+  - MoonChip
+  - Shield
+  - MoonPiece
   layers:
   - Default
   - TransparentFX

@@ -11,10 +11,9 @@ public class ClusterBombot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        clusterParent.childCount--;
-
         if (collision.tag == "PlayerProjectile")
         {
+            clusterParent.childCount--;
             Destroy(collision.gameObject);
 
             if (clusterParent.childCount <= 0)
@@ -28,10 +27,17 @@ public class ClusterBombot : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
+    { 
+        if (collision.collider.tag == "Shield" && collision.collider.GetComponent<Shield>().GetShieldAmount() > 0)
+        {
+            collision.collider.GetComponent<Shield>().ShieldHit();
+            Destroy(gameObject);
+        }
+
         if (collision.collider.tag == "Player" && !collision.collider.GetComponent<PlayerController>().godMode)
         {
             Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 

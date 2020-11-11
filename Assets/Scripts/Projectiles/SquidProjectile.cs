@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlasmaProjectile : MonoBehaviour
+public class SquidProjectile : MonoBehaviour
 {
-    [Tooltip("Higher number, slower projectile")] [SerializeField] int projectileSpeed = 20;
+    [Tooltip("Higher number, slower projectile")] [SerializeField] int projectileSpeed = 50;
 
-    public float moveSpeed = 20f;
     public float lifeTime = 3f;
     private float lifeTimeTimer;
 
@@ -15,12 +14,12 @@ public class PlasmaProjectile : MonoBehaviour
     Vector2 targetPosition;
     Vector2 moveDir;
 
-    public static PlasmaProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
+    public static SquidProjectile Create(Vector2 spawnPosition, Vector2 targetPosition)
     {
-        Transform pfProjectile = Resources.Load<Transform>("pfPlasmaProjectile");
+        Transform pfProjectile = Resources.Load<Transform>("pfSquidProjectile");
         Transform projectileTransform = Instantiate(pfProjectile, spawnPosition, Quaternion.identity);
 
-        PlasmaProjectile projectile = projectileTransform.GetComponent<PlasmaProjectile>();
+        SquidProjectile projectile = projectileTransform.GetComponent<SquidProjectile>();
         projectile.SetTargetPosition(targetPosition);
 
         return projectile;
@@ -50,7 +49,7 @@ public class PlasmaProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Shield" && collision.GetComponent<Shield>().GetShieldAmount() > 0)
+        if (collision.tag == "Shield" && collision.GetComponent<Shield>().GetShieldAmount() > 0)
         {
             collision.GetComponent<Shield>().ShieldHit();
             Destroy(gameObject);
@@ -68,5 +67,4 @@ public class PlasmaProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }
