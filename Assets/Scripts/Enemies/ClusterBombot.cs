@@ -41,4 +41,9 @@ public class ClusterBombot : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        Scoreboard.Instance.AddScore(scoreAmount);
+    }
+
 }

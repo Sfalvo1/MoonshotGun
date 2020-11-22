@@ -13,6 +13,7 @@ public class SquidBoss : MonoBehaviour
     }
 
     public int bossHealth = 500;
+    public int scoreAmount = 1000;
 
     [Header("Shooting")]
     [SerializeField] Transform[] shootingPositions;
@@ -22,12 +23,13 @@ public class SquidBoss : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] Vector2 enterPosition;
-    [SerializeField] Vector2[] firstPhasePositions;
     [SerializeField] Vector2[] secondPhasePositions;
 
     public BossPhase bossPhase;
 
     public Transform player;
+
+    private bool isAlive = true;
 
     private int firstPhaseIndex;
     private int moveIndex = 0;
@@ -67,18 +69,24 @@ public class SquidBoss : MonoBehaviour
             }
             if (bossHealth <= 0)
             {
-                Destroy(gameObject);
+                isAlive = false;
                 BossHealth.Instance.Hide();
+                GetComponent<Animator>().SetTrigger("squidBossDying");
             }
             Destroy(collision.gameObject);
         }
+    }
+
+    private void DestroyBoss()
+    {
+        Destroy(gameObject);
     }
 
     private void HandleAttack()
     {
         shootTimer -= Time.deltaTime;
 
-        if (bossPhase != BossPhase.Intro && shootTimer <= 0)
+        if (bossPhase != BossPhase.Intro && shootTimer <= 0 && isAlive)
         {
             foreach(Transform shotTransform in shootingPositions)
             {
@@ -129,7 +137,8 @@ public class SquidBoss : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, new Vector2(6.5f, 3.5f)) > .1f)
             {
-                transform.position += transform.right * 3f * Time.deltaTime;
+                transform.position = Vector2.MoveTowards((Vector2)transform.position, new Vector2(6.5f, 3.5f), 3f * Time.deltaTime);
+                //transform.position += transform.right * 3f * Time.deltaTime;
             }
             else
             {
@@ -140,7 +149,8 @@ public class SquidBoss : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, new Vector2(-6.5f, 3.5f)) > .1f)
             {
-                transform.position -= transform.right * 3f * Time.deltaTime;
+                transform.position = Vector2.MoveTowards((Vector2)transform.position, new Vector2(-6.5f, 3.5f), 3f * Time.deltaTime);
+                //transform.position -= transform.right * 3f * Time.deltaTime;
             }
             else
             {
@@ -151,21 +161,26 @@ public class SquidBoss : MonoBehaviour
 
     private void SecondPhaseMovement()
     {
-        if (Vector2.Distance((Vector2)transform.position, firstPhasePositions[moveIndex]) > .1f)
+        if (Vector2.Distance((Vector2)transform.position, secondPhasePositions[moveIndex]) > .1f)
         {
-            transform.position = Vector2.MoveTowards((Vector2)transform.position, firstPhasePositions[moveIndex], 3f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards((Vector2)transform.position, secondPhasePositions[moveIndex], 4f * Time.deltaTime);
         }
-        if (Vector2.Distance((Vector2)transform.position, firstPhasePositions[moveIndex]) < .1f)
+        if (Vector2.Distance((Vector2)transform.position, secondPhasePositions[moveIndex]) < .1f)
         {
-            if (moveIndex == firstPhasePositions.Length)
-            {
-                moveIndex++;
-            }
-            else
+            if (moveIndex == secondPhasePositions.Length -1)
             {
                 moveIndex = 0;
             }
+            else
+            {
+                moveIndex++;
+            }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Scoreboard.Instance.AddScore(scoreAmount);
     }
 
 }

@@ -7,6 +7,14 @@ public class EnemyDirector : MonoBehaviour
 {
     public Enemy[] enemies; // Change to lists in the future
     public Transform player;
+
+    public Enemy bossPrefab;
+    public Vector2 bossSpawnPoint;
+
+    public float bossTimerMax;
+    private float bossTimer;
+    private bool bossActivated = false;
+
     public float spawnTimerMax;
     private float spawnTimer;
 
@@ -18,18 +26,27 @@ public class EnemyDirector : MonoBehaviour
     {
         GenerateSpawnPosition();
         spawnTimer = spawnTimerMax;
+        bossTimer = bossTimerMax;
     }
 
     // Update is called once per frame
     void Update()
     {
         spawnTimer -= Time.deltaTime;
+        bossTimer -= Time.deltaTime;
 
-        if(spawnTimer <= 0)
+        if(spawnTimer <= 0 && !bossActivated)
         {
             SpawnEnemy();
             GenerateSpawnPosition();
             spawnTimer = spawnTimerMax;
+        }
+
+        if(bossTimer <= 0 && !bossActivated)
+        {
+            Enemy boss = Instantiate(bossPrefab, bossSpawnPoint, Quaternion.identity);
+            boss.player = player;
+            bossActivated = true;
         }
     }
 

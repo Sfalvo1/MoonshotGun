@@ -63,4 +63,9 @@ public class ChaserEnemy : MonoBehaviour
         spriteRenderer.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
 
+    private void OnDestroy()
+    {
+        Scoreboard.Instance.AddScore(scoreAmount);
+    }
+
 }

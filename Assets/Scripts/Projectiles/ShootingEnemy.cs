@@ -70,4 +70,9 @@ public class ShootingEnemy : MonoBehaviour
     {
         // Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        Scoreboard.Instance.AddScore(scoreAmount);
+    }
 }

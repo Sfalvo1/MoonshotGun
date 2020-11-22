@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealth: 500
+  scoreAmount: 1000
   shootingPositions:
   - {fileID: 6061760652711961620}
   - {fileID: 6061760652654866150}
@@ -347,14 +348,14 @@ MonoBehaviour:
   - {fileID: 6061760652752958887}
   - {fileID: 6061760652888075966}
   laserPositions:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6834233857102830602}
+  - {fileID: 8768705095198396003}
   shootTimerMax: 0.5
   enterPosition: {x: 0, y: 3.5}
-  firstPhasePositions:
+  secondPhasePositions:
   - {x: -6.5, y: 3.5}
+  - {x: 0, y: -2}
   - {x: 6.5, y: 3.5}
-  secondPhasePositions: []
   bossPhase: 0
   player: {fileID: 0}
 --- !u!1 &6061760652405951674

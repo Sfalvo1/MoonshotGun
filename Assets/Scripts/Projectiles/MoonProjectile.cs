@@ -53,7 +53,7 @@ public class MoonProjectile : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            Scoreboard.Instance.AddScore(collision.GetComponent<ScoreAmount>().scoreAmount);
+            // Scoreboard.Instance.AddScore(collision.GetComponent<ScoreAmount>().scoreAmount);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

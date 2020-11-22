@@ -43,5 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8263c767eeec4549a88bc18d4d4ed44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  spawnTimerMax: 0
+  enemies:
+  - {fileID: 3473363961800920258, guid: 56a9dbd0cbc239446b1601395f065342, type: 3}
+  - {fileID: 7839305615359946891, guid: fb63a7b4398295d4f9f5ea6d7e1928a2, type: 3}
+  - {fileID: 1240109527883062223, guid: 07a90c3d4d363d24896f09077cfa6eeb, type: 3}
+  player: {fileID: 0}
+  bossPrefab: {fileID: 0}
+  bossSpawnPoint: {x: 0, y: 0}
+  bossTimerMax: 0
+  spawnTimerMax: 1

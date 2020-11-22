@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldHealth: 5
-  shieldTimerMax: 1
+  shieldTimerMax: 2
   shieldUI: {fileID: 0}
   shieldSprite: {fileID: 1242992467}
 --- !u!1 &1777268391
@@ -556,7 +556,7 @@ MonoBehaviour:
   - {fileID: 4749457995990651518}
   - {fileID: 2543902759748653370}
   godMode: 1
-  moonChunkDebugStartAmount: 80
+  moonChunkDebugStartAmount: 999
 --- !u!1 &7712338104520140092
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 39b9b42f4f2e8f642a963db8adad59a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
