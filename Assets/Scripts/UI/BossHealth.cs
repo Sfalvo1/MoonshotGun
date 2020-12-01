@@ -6,25 +6,17 @@ public class BossHealth : MonoBehaviour
 {
     public static BossHealth Instance { get; private set; }
 
+    public int healthBarScale = 20;
+
     private void Awake()
     {
         Instance = this;
+
+        healthBarBackgroundTransform = transform.Find("healthBackground");
     }
 
     [SerializeField] Transform healthBarTransform;
     [SerializeField] Transform healthBarBackgroundTransform;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Show()
     {
@@ -40,6 +32,6 @@ public class BossHealth : MonoBehaviour
 
     public void UpdateHealth(float bosshealth)
     {
-        healthBarTransform.localScale = new Vector3(bosshealth / 20, healthBarTransform.localScale.y, 1);
+        healthBarTransform.localScale = new Vector3(bosshealth / healthBarScale, healthBarTransform.localScale.y, 1);
     }
 }

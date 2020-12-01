@@ -199,7 +199,7 @@ MonoBehaviour:
   movementSpeed: 3
   chaseDistance: 3
   spriteRenderer: {fileID: 3444939133093501506}
-  scoreAmount: 0
+  scoreAmount: 15
 --- !u!114 &6422854461187668064
 MonoBehaviour:
   m_ObjectHideFlags: 0

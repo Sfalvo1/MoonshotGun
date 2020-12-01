@@ -57,6 +57,11 @@ public class SquidBoss : MonoBehaviour
         HandlePhaseMovement();
     }
 
+    public void DestroyBoss()
+    {
+        // Destroy(gameObject)
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "PlayerProjectile")
@@ -72,21 +77,20 @@ public class SquidBoss : MonoBehaviour
                 isAlive = false;
                 BossHealth.Instance.Hide();
                 GetComponent<Animator>().SetTrigger("squidBossDying");
+
+                Scoreboard.Instance.AddScore(scoreAmount);
+
+                GetComponent<LevelManager>().LoadLevel();
             }
             Destroy(collision.gameObject);
         }
-    }
-
-    private void DestroyBoss()
-    {
-        Destroy(gameObject);
     }
 
     private void HandleAttack()
     {
         shootTimer -= Time.deltaTime;
 
-        if (bossPhase != BossPhase.Intro && shootTimer <= 0 && isAlive)
+        if (bossPhase != BossPhase.Intro && shootTimer <= 0 && isAlive && player != null)
         {
             foreach(Transform shotTransform in shootingPositions)
             {

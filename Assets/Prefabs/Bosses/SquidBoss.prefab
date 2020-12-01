@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 6061760652201581760}
   - component: {fileID: 6061760652201581789}
   - component: {fileID: 6061760652201581788}
+  - component: {fileID: -7478435314976404816}
   m_Layer: 0
   m_Name: SquidBoss
   m_TagString: Untagged
@@ -282,7 +283,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2891324081447201745, guid: f3ce23efae0c68142a707823f9402057, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -358,6 +359,19 @@ MonoBehaviour:
   - {x: 6.5, y: 3.5}
   bossPhase: 0
   player: {fileID: 0}
+--- !u!114 &-7478435314976404816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6061760652201581767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fabfae1d75bf6d4ba88840540d44916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelToLoad: 2
 --- !u!1 &6061760652405951674
 GameObject:
   m_ObjectHideFlags: 0

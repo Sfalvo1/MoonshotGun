@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  spinSpeed: 5
+  spin: 0
 --- !u!1 &1933392784419437647
 GameObject:
   m_ObjectHideFlags: 0

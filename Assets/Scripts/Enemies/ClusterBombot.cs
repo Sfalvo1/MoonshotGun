@@ -37,6 +37,7 @@ public class ClusterBombot : MonoBehaviour
         if (collision.collider.tag == "Player" && !collision.collider.GetComponent<PlayerController>().godMode)
         {
             Destroy(collision.gameObject);
+            GameOverUI.Instance.Show();
             Destroy(gameObject);
         }
     }

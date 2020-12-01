@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moon: {fileID: 5464881576720313199, guid: d764c2f303118e240be3c46c6d30b5d0, type: 3}
+  moonChip: {fileID: 9036761640235709254, guid: 09f09b4a3afccfe41b6f07ea2c6e2286, type: 3}
   spawnTimerMax: 5
+  moonChunkSpawnTimerMax: 0.75

@@ -59,6 +59,7 @@ public class SquidProjectile : MonoBehaviour
             if (!collision.GetComponent<PlayerController>().godMode)
             {
                 Destroy(collision.gameObject);
+                GameOverUI.Instance.Show();
             }
             Destroy(gameObject);
         }

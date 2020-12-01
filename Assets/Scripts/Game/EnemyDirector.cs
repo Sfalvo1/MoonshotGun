@@ -27,6 +27,7 @@ public class EnemyDirector : MonoBehaviour
         GenerateSpawnPosition();
         spawnTimer = spawnTimerMax;
         bossTimer = bossTimerMax;
+        player = FindObjectOfType<PlayerController>().GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -52,7 +53,7 @@ public class EnemyDirector : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int enemyNumber = UnityEngine.Random.Range(0, 3);
+        int enemyNumber = UnityEngine.Random.Range(0, enemies.Length);
         Enemy spawnedEnemy = Instantiate(enemies[enemyNumber], spawnPosition, Quaternion.identity);
         if (player != null)
         {

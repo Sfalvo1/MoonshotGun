@@ -62,7 +62,6 @@ public class SquidLaserProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("hitting something");
         if (collision.tag == "Shield" && collision.GetComponent<Shield>().GetShieldAmount() > 0)
         {
             collision.GetComponent<Shield>().ShieldHit();
@@ -73,6 +72,7 @@ public class SquidLaserProjectile : MonoBehaviour
             if (!collision.GetComponent<PlayerController>().godMode)
             {
                 Destroy(collision.gameObject);
+                GameOverUI.Instance.Show();
             }
             Destroy(gameObject);
         }

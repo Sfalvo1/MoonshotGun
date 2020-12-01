@@ -13,10 +13,13 @@ public class GameOverUI : MonoBehaviour
         Instance = this;
 
         transform.Find("restartBtn").GetComponent<Button>().onClick.AddListener(() => {
-            GameSceneManager.Load("SampleScene");
+            GameSceneManager.Load("Level1");
+            PlayerPrefs.SetInt("CurrentScore", 0);
         });
         transform.Find("quitBtn").GetComponent<Button>().onClick.AddListener(() => {
+
             GameSceneManager.Load("MainMenuScene");
+            PlayerPrefs.SetInt("CurrentScore", 0);
         });
 
         Hide();
@@ -24,7 +27,11 @@ public class GameOverUI : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        try
+        {
+            gameObject.SetActive(true);
+        }
+        catch { return; }
 
         transform.Find("finalScoreText").GetComponent<TextMeshProUGUI>().SetText("Final Score: " + Scoreboard.Instance.scoreNumber);
     }
@@ -33,4 +40,5 @@ public class GameOverUI : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
 }

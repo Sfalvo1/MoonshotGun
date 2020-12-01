@@ -65,7 +65,10 @@ public class LaserProjectile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            Scoreboard.Instance.AddScore(collision.GetComponent<ScoreAmount>().scoreAmount);
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySound(SoundManager.Sounds.ShipExplosion);
+            }
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

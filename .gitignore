@@ -5,6 +5,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/[Mm]odern [Uu]I [Pp]ack
 
 # Unity Standard Assets and Sample Scenes
 
@@ -71,3 +72,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/Modern UI Pack/
+Assets/Ultimate Sound FX Bundle/
+Assets/CodeMonkey/Assets.cs
+Assets/CodeMonkey/

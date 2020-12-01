@@ -38,7 +38,7 @@ public class Shield : MonoBehaviour
         if (shieldHealth < 5)
         {
             shieldTimer -= Time.deltaTime;
-            if (shieldTimer <= 0)
+            if (shieldTimer < 0)
             {
                 shieldHealth++;
                 shieldTimer = shieldTimerMax;

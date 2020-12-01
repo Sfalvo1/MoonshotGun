@@ -8,12 +8,11 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float controlSpeed = 5f;
     [SerializeField] float adjustAngle = 90f;
-
     [SerializeField] Transform laserTransform;
 
     [Header("Shooting")]
-    public int moonChunkAmount;
 
+    public int moonChunkAmount;
     [SerializeField] float shootingTimerMax;
     float shootTimer;
 
@@ -33,7 +32,6 @@ public class PlayerController : MonoBehaviour
     float xThrow, yThrow;
 
     Camera camera;
-
 
     // Start is called before the first frame update
     void Start()
@@ -91,11 +89,13 @@ public class PlayerController : MonoBehaviour
             shootTimer = shootingTimerMax;
             ShootGuns();
             AmmoUI.Instance.SetAmmoText(moonChunkAmount);
+            SoundManager.Instance.PlaySound(SoundManager.Sounds.ShotgunShot);
         }
         if (Input.GetMouseButton(1) && laserTimer <= 0)
         {
             laserTimer = laserTimerMax;
             LaserProjectile.Create(laserTransform.position, camera.ScreenToWorldPoint(Input.mousePosition));
+            SoundManager.Instance.PlaySound(SoundManager.Sounds.LaserShot);
         }
     }
 
@@ -135,7 +135,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameOverUI.Instance.Show();
+        if (Scoreboard.Instance.scoreNumber > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", Scoreboard.Instance.scoreNumber);
+        }
     }
 
 }

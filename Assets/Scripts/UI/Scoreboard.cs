@@ -18,17 +18,20 @@ public class Scoreboard : MonoBehaviour
 
     private void Start()
     {
-        SetScore(scoreNumber);
+        scoreNumber = PlayerPrefs.GetInt("CurrentScore");
     }
 
     public void AddScore(int scoreAmount)
     {
         scoreNumber += scoreAmount;
         SetScore(scoreNumber);
+
+        PlayerPrefs.SetInt("CurrentScore", scoreNumber);
     }
 
     private void SetScore(int newScore)
     {
         textUI.text = newScore.ToString();
+
     }
 }

@@ -23,6 +23,8 @@ public class PlasmaProjectile : MonoBehaviour
         PlasmaProjectile projectile = projectileTransform.GetComponent<PlasmaProjectile>();
         projectile.SetTargetPosition(targetPosition);
 
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.PlasmaShot);
+
         return projectile;
     }
 
@@ -60,6 +62,7 @@ public class PlasmaProjectile : MonoBehaviour
             if (!collision.GetComponent<PlayerController>().godMode)
             {
                 Destroy(collision.gameObject);
+                GameOverUI.Instance.Show();
             }
             Destroy(gameObject);
         }
