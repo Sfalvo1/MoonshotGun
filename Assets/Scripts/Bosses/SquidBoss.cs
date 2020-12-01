@@ -72,15 +72,14 @@ public class SquidBoss : MonoBehaviour
             {
                 bossPhase = BossPhase.SecondPhase;
             }
-            if (bossHealth <= 0)
+            if (bossHealth <= 0 && isAlive)
             {
-                isAlive = false;
+                Scoreboard.Instance.AddScore(scoreAmount);
                 BossHealth.Instance.Hide();
                 GetComponent<Animator>().SetTrigger("squidBossDying");
 
-                Scoreboard.Instance.AddScore(scoreAmount);
-
                 GetComponent<LevelManager>().LoadLevel();
+                isAlive = false;
             }
             Destroy(collision.gameObject);
         }

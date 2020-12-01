@@ -1621,7 +1621,7 @@ PrefabInstance:
       objectReference: {fileID: 1027831519}
     - target: {fileID: 725896951418517102, guid: 6d2c0c09fd984384d93dec2c4842802e, type: 3}
       propertyPath: bossTimerMax
-      value: 5
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8921426574126316001, guid: 6d2c0c09fd984384d93dec2c4842802e, type: 3}
       propertyPath: m_LocalPosition.x

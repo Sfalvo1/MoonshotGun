@@ -19,6 +19,7 @@ public class Scoreboard : MonoBehaviour
     private void Start()
     {
         scoreNumber = PlayerPrefs.GetInt("CurrentScore");
+        SetScore(scoreNumber);
     }
 
     public void AddScore(int scoreAmount)

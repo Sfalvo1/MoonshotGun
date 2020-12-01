@@ -94,14 +94,10 @@ public class SpawnerBoss : MonoBehaviour
         {
             IntroMovement();
         }
-        else if (bossPhase == BossPhase.FirstPhase)
+        else
         {
             FirstPhaseMovement();
         }
-        //else
-        //{
-        //    SecondPhaseMovement();
-        //}
 
     }
 
@@ -164,25 +160,6 @@ public class SpawnerBoss : MonoBehaviour
         }
     }
 
-    private void SecondPhaseMovement()
-    {
-        if (Vector2.Distance((Vector2)transform.position, secondPhasePositions[moveIndex]) > .1f)
-        {
-            transform.position = Vector2.MoveTowards((Vector2)transform.position, secondPhasePositions[moveIndex], 4f * Time.deltaTime);
-        }
-        if (Vector2.Distance((Vector2)transform.position, secondPhasePositions[moveIndex]) < .1f)
-        {
-            if (moveIndex == secondPhasePositions.Length - 1)
-            {
-                moveIndex = 0;
-            }
-            else
-            {
-                moveIndex++;
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "PlayerProjectile")
@@ -192,18 +169,24 @@ public class SpawnerBoss : MonoBehaviour
 
             if (bossHealth <= 250)
             {
-                // bossPhase = BossPhase.SecondPhase;
-                spawnlingMax = 12;
-                moveSpeed += 2f;
-                spawnTimerMax = .75f;
+                if (bossPhase != BossPhase.SecondPhase)
+                {
+                    bossPhase = BossPhase.SecondPhase;
+                    spawnlingMax = 12;
+                    moveSpeed += 2f;
+                    spawnTimerMax = .75f;
+                }
             }
             if (bossHealth <= 0)
             {
+
                 BossHealth.Instance.Hide();
 
                 Scoreboard.Instance.AddScore(scoreAmount);
 
                 WinScreenUI.Instance.Show();
+
+                Destroy(gameObject);
             }
             Destroy(collision.gameObject);
         }

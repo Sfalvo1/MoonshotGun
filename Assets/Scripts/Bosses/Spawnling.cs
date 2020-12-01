@@ -18,6 +18,8 @@ public class Spawnling : MonoBehaviour
     public float shootTimerMax = 2;
     private float shootTimer;
 
+    public int scoreAmount = 5;
+
     // If on the right side, make -1
     public int side = 1;
 
@@ -109,6 +111,7 @@ public class Spawnling : MonoBehaviour
         if(collision.tag == "PlayerProjectile" && bossTransform != null)
         {
             bossTransform.GetComponent<SpawnerBoss>().spawnlingCurrentAmount--;
+            Scoreboard.Instance.AddScore(scoreAmount);
         }
     }
 

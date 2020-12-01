@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool isDisabled = false;
+
     [Header("Movement")]
     [SerializeField] float controlSpeed = 5f;
     [SerializeField] float adjustAngle = 90f;
@@ -51,9 +53,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessMovement();
-        ProcessRotation();
-        ProcessFiring();
+        if (!isDisabled)
+        {
+            ProcessMovement();
+            ProcessRotation();
+            ProcessFiring();
+        }
     }
 
     private void ProcessRotation()
@@ -84,7 +89,7 @@ public class PlayerController : MonoBehaviour
         shootTimer -= Time.deltaTime;
         laserTimer -= Time.deltaTime;
 
-        if (Input.GetMouseButton(0) && shootTimer <= 0)
+        if (Input.GetMouseButton(0) && shootTimer <= 0 && moonChunkAmount > 0)
         {
             shootTimer = shootingTimerMax;
             ShootGuns();

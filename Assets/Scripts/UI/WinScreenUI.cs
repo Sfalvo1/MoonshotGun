@@ -26,12 +26,7 @@ public class WinScreenUI : MonoBehaviour
 
     public void Show()
     {
-        try
-        {
-            gameObject.SetActive(true);
-        }
-        catch { return; }
-
+        gameObject.SetActive(true);
         transform.Find("finalScoreText").GetComponent<TextMeshProUGUI>().SetText("Final Score: " + Scoreboard.Instance.scoreNumber);
     }
 
