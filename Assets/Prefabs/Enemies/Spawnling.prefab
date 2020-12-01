@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: -6965055418091558095}
   - component: {fileID: 5912948509701229814}
   - component: {fileID: 4078998506189986911}
+  - component: {fileID: -2633085937056303710}
   m_Layer: 0
   m_Name: Spawnling
   m_TagString: Enemy
@@ -209,4 +210,18 @@ MonoBehaviour:
   shootingPosition: {fileID: 3297172257469618566}
   bossTransform: {fileID: 0}
   shootTimerMax: 2
+  scoreAmount: 5
   side: 1
+--- !u!114 &-2633085937056303710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078998506189986880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deffba6c34a1527428ee9da931de1d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreAmount: 5

@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 6061760652201581789}
   - component: {fileID: 6061760652201581788}
   - component: {fileID: -7478435314976404816}
+  - component: {fileID: -7822215161749418503}
   m_Layer: 0
   m_Name: SquidBoss
   m_TagString: Untagged
@@ -372,6 +373,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 2
+--- !u!114 &-7822215161749418503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6061760652201581767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deffba6c34a1527428ee9da931de1d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreAmount: 1000
 --- !u!1 &6061760652405951674
 GameObject:
   m_ObjectHideFlags: 0

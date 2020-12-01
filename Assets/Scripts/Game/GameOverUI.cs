@@ -14,7 +14,12 @@ public class GameOverUI : MonoBehaviour
 
         transform.Find("restartBtn").GetComponent<Button>().onClick.AddListener(() => {
             GameSceneManager.Load("Level1");
+            if (Scoreboard.Instance != null)
+            {
+                Scoreboard.Instance.scoreNumber = 0;
+            }
             PlayerPrefs.SetInt("CurrentScore", 0);
+            Scoreboard.Instance.SubtractScore();
         });
         transform.Find("quitBtn").GetComponent<Button>().onClick.AddListener(() => {
 

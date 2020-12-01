@@ -14,6 +14,8 @@ public class Scoreboard : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        scoreNumber = PlayerPrefs.GetInt("CurrentScore");
+        SetScore(scoreNumber);
     }
 
     private void Start()
@@ -34,5 +36,18 @@ public class Scoreboard : MonoBehaviour
     {
         textUI.text = newScore.ToString();
 
+    }
+
+    public void SubtractScore()
+    {
+        ScoreAmount[] subtractMe = FindObjectsOfType<ScoreAmount>();
+        foreach(ScoreAmount score in subtractMe)
+        {
+            scoreNumber -= score.scoreAmount;
+        }
+        if(scoreNumber < 0)
+        {
+            scoreNumber = 0;
+        }
     }
 }

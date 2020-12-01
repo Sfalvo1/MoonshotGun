@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 6170505756078440592}
   - component: {fileID: 6163138241190959832}
   - component: {fileID: 2552640085862622457}
+  - component: {fileID: -1075518731213556628}
   m_Layer: 0
   m_Name: SpawnerBoss
   m_TagString: Untagged
@@ -338,6 +339,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+--- !u!114 &-1075518731213556628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381900487986856151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deffba6c34a1527428ee9da931de1d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreAmount: 1000
 --- !u!1 &3083384620799751793
 GameObject:
   m_ObjectHideFlags: 0

@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2258639929919301413, guid: bcd3c07e435de914ea1d5a0d36227d2e, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2258639929919301413, guid: bcd3c07e435de914ea1d5a0d36227d2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 478758185363497441, guid: 3deae297d6c32be44934a0c97ffda4a0, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 478758185363497441, guid: 3deae297d6c32be44934a0c97ffda4a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -590,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6734262839202862359, guid: c9651ceb7b9f945478f19b8361a4481b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6734262839202862359, guid: c9651ceb7b9f945478f19b8361a4481b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -980,7 +980,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342504673
 GameObject:
@@ -1179,7 +1179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7712338103919963090, guid: ad4d394a1a9bded42abb63a3bd00bf3b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7712338103919963090, guid: ad4d394a1a9bded42abb63a3bd00bf3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2111,5 +2111,5 @@ Transform:
   - {fileID: 3894265935333283406}
   - {fileID: 1484241687}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
